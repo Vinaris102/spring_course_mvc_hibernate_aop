@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="for" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <body>
@@ -6,6 +7,9 @@
 <br>
 
 <form:form action="saveEmployee" modelAttribute="employee">
+
+    <for:hidden path="id"/>
+
     Name <form:input path="name"/>
     <br> <br>
     Surname <form:input path="surname"/>
