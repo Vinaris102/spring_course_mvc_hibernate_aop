@@ -21,7 +21,7 @@ public class MyController {
 
     @RequestMapping("/")
     public String showAllEmployees(Model model){
-        System.out.println("========== КОНТРОЛЛЕР ВЫЗВАН ==========");
+        System.out.println("========== showAllEmployees ВЫЗВАН ==========");
         List<Employee> allEmployees =  employeeService.getAllEmployees();
         model.addAttribute("allEmps", allEmployees);
         return "all-employees";
@@ -34,13 +34,18 @@ public class MyController {
     }
     @RequestMapping("/addNewEmployee")
     public String addNewEmployee(Model model){
+        System.out.println("========== addNewEmployee ВЫЗВАН ==========");
+
         Employee employee = new Employee();
         model.addAttribute("employee", employee);
+        System.out.println("Создан новый Employee, возвращаем employee-info");
         return "employee-info";
 
     }
     @RequestMapping("/saveEmployee")
     public String saveEmployee(@ModelAttribute("employee") Employee employee){
+        System.out.println("========== saveEmployee ВЫЗВАН ==========");
+        System.out.println("Сохраняем: " + employee.getName() + " " + employee.getSurname());
         employeeService.saveEmployee(employee);
         return "redirect:/";
     }
